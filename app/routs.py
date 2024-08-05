@@ -17,7 +17,7 @@ def train():
     moves = list(positions.values())
     index = random.randint(0, len(fens)-1)
     fen, move = fens[index], moves[index]
-    print(move)
+
     return render_template('train.html', fen=fen, move=move, color=session['color'])
 
 @app.route("/upload_pgn", methods=['GET', 'POST'])

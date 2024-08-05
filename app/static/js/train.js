@@ -82,6 +82,10 @@ function restart() {
     window.board.enableMoveInput(inputHandler, COL)
 }
 
+function next() {
+    document.location.reload()
+}
+
 window.board = new Chessboard(document.getElementById("board"), {
     position: Chess.FEN,
     assetsUrl: "https://cdn.jsdelivr.net/npm/cm-chessboard@8/assets/",
@@ -96,3 +100,4 @@ window.board = new Chessboard(document.getElementById("board"), {
 restart()
 
 document.getElementById("restart-button").addEventListener("click", restart)
+document.getElementById("next-button").addEventListener("click", next)
