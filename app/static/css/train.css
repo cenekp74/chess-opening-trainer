@@ -1,3 +1,49 @@
+:root {
+    --border-radius: 7px;
+    --restart-button-color: red;
+    --restart-button-hover-color: #d11100;
+    --next-button-color: green;
+    --next-button-hover-color: #276318;
+}
+
 #board {
     width: 30vw;
+}
+
+.panel-under {
+    width: 30vw;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .3rem;
+    height: 3rem;
+}
+
+.button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.4rem;
+    border-radius: var(--border-radius);
+    color: aliceblue;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+#restart-button {
+    background-color: var(--restart-button-color);
+}
+#restart-button:hover {
+    background-color: var(--restart-button-hover-color);
+}
+
+#next-button {
+    background-color: var(--next-button-color);
+}
+#next-button:hover {
+    background-color: var(--next-button-hover-color);
 }
