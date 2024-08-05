@@ -1,0 +1,7 @@
+.vscode/
+venv
+app/__pycache__/
+instance/
+migrations/__pycache__/
+migrations/versions/__pycache__/
+__pycache__/
