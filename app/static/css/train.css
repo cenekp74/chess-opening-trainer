@@ -4,6 +4,15 @@
     --restart-button-hover-color: #d11100;
     --next-button-color: green;
     --next-button-hover-color: #276318;
+    --main-container-color: grey;
+}
+
+.main-container {
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: var(--border-radius);
+    background-color: var(--main-container-color);
+    width: fit-content;
 }
 
 #board {
