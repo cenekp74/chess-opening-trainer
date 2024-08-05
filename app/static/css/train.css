@@ -4,6 +4,8 @@
     --next-button-color: green;
     --next-button-hover-color: #276318;
     --main-container-color: #2c2323;
+    --main-container-solved-color: #13350e;
+    --main-container-failed-color: #440505;
 }
 
 .main-container {
@@ -12,6 +14,13 @@
     border-radius: var(--border-radius);
     background-color: var(--main-container-color);
     width: fit-content;
+}
+
+.main-container.solved {
+    background-color: var(--main-container-solved-color);
+}
+.main-container.failed {
+    background-color: var(--main-container-failed-color);
 }
 
 #board {

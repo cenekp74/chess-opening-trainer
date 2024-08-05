@@ -74,6 +74,11 @@ function uciFromMove(move) {
 function checkMove(move) {
     let result = uciFromMove(move) == MOVE
     console.log(result)
+    if (result) {
+        document.querySelector(".main-container").classList.add("solved")
+    } else {
+        document.querySelector(".main-container").classList.add("failed")
+    }
 }
 
 function restart() {
