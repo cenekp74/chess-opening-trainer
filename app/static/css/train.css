@@ -1,10 +1,9 @@
 :root {
-    --border-radius: 7px;
     --restart-button-color: red;
     --restart-button-hover-color: #d11100;
     --next-button-color: green;
     --next-button-hover-color: #276318;
-    --main-container-color: grey;
+    --main-container-color: #2c2323;
 }
 
 .main-container {

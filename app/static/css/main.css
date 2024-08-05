@@ -1,0 +1,14 @@
+:root {
+    --border-radius: 7px;
+    --bg-color: #090911;
+}
+
+body {
+    background-color: var(--bg-color);
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -23,8 +23,10 @@
     {% endfor %}
     {% endif %}
     {% endwith %}
-    {% block body %}
-    {% endblock %}
+    <div class="content">
+        {% block body %}
+        {% endblock %}
+    </div>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>
