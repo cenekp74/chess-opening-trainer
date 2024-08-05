@@ -10,7 +10,7 @@ import random
 
 @app.route("/train")
 def train():
-    if 'positions' not in session:
+    if 'positions' not in session or 'color' not in session:
         return redirect(url_for("upload_pgn"))
     positions = session['positions']
     fens = list(positions.keys())
@@ -18,7 +18,7 @@ def train():
     index = random.randint(0, len(fens)-1)
     fen, move = fens[index], moves[index]
     print(move)
-    return render_template('train.html', fen=fen, move=move)
+    return render_template('train.html', fen=fen, move=move, color=session['color'])
 
 @app.route("/upload_pgn", methods=['GET', 'POST'])
 def upload_pgn():
@@ -29,6 +29,7 @@ def upload_pgn():
         start = form.start.data
         positions = fens_from_pgn(pgn, color, start=start)
         session['positions'] = positions
+        session['color'] = color
         return redirect(url_for('train'))
     return render_template('upload_pgn.html', form=form)
 

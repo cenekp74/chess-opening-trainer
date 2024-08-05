@@ -13,7 +13,7 @@ function inputHandler(event) {
         event.chessboard.removeMarkers(MARKER_TYPE.bevel)
     }
     if (event.type === INPUT_EVENT_TYPE.moveInputStarted) {
-        const moves = chess.moves({square: event.squareFrom, verbose: true})
+        const moves = window.chess.moves({square: event.squareFrom, verbose: true})
         for (const move of moves) { // draw dots on possible squares
             if (move.promotion && move.promotion !== "q") {
                 continue
@@ -27,28 +27,28 @@ function inputHandler(event) {
         return moves.length > 0
     } else if (event.type === INPUT_EVENT_TYPE.validateMoveInput) {
         const move = {from: event.squareFrom, to: event.squareTo, promotion: event.promotion}
-        const result = chess.move(move)
+        const result = window.chess.move(move)
         if (result) {
             event.chessboard.state.moveInputProcess.then(() => { // wait for the move input process has finished
-                event.chessboard.setPosition(chess.fen(), true).then(() => { // update position, maybe castled and wait for animation has finished
+                event.chessboard.setPosition(window.chess.fen(), true).then(() => { // update position, maybe castled and wait for animation has finished
                     checkMove(move)
                 })
             })
         } else {
             // promotion?
-            let possibleMoves = chess.moves({square: event.squareFrom, verbose: true})
+            let possibleMoves = window.chess.moves({square: event.squareFrom, verbose: true})
             for (const possibleMove of possibleMoves) {
                 if (possibleMove.promotion && possibleMove.to === event.squareTo) {
                     event.chessboard.showPromotionDialog(event.squareTo, COLOR.white, (result) => {
                         console.log("promotion result", result)
                         if (result.type === PROMOTION_DIALOG_RESULT_TYPE.pieceSelected) {
-                            chess.move({from: event.squareFrom, to: event.squareTo, promotion: result.piece.charAt(1)})
-                            event.chessboard.setPosition(chess.fen(), true)
+                            window.chess.move({from: event.squareFrom, to: event.squareTo, promotion: result.piece.charAt(1)})
+                            event.chessboard.setPosition(window.chess.fen(), true)
                             checkMove(move)
                         } else {
                             // promotion canceled
                             event.chessboard.enableMoveInput(inputHandler, COLOR.white)
-                            event.chessboard.setPosition(chess.fen(), true)
+                            event.chessboard.setPosition(window.chess.fen(), true)
                         }
                     })
                     return true
@@ -76,10 +76,14 @@ function checkMove(move) {
     console.log(result)
 }
 
-const chess = new Chess(FEN)
+function restart() {
+    window.chess = new Chess(FEN)
+    window.board.setPosition(window.chess.fen())
+    window.board.enableMoveInput(inputHandler, COL)
+}
 
-const board = new Chessboard(document.getElementById("board"), {
-    position: chess.fen(),
+window.board = new Chessboard(document.getElementById("board"), {
+    position: Chess.FEN,
     assetsUrl: "https://cdn.jsdelivr.net/npm/cm-chessboard@8/assets/",
     style: {borderType: BORDER_TYPE.none, pieces: {file: "pieces/staunty.svg"}, animationDuration: 100},
     orientation: COLOR.white,
@@ -89,5 +93,6 @@ const board = new Chessboard(document.getElementById("board"), {
         {class: Accessibility, props: {visuallyHidden: true}}
     ]
 })
+restart()
 
-board.enableMoveInput(inputHandler, COLOR.white)
+document.getElementById("restart-button").addEventListener("click", restart)
