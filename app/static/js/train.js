@@ -71,6 +71,20 @@ function uciFromMove(move) {
     return uci
 }
 
+function moveFromUci(uci) {
+    if (typeof uci !== 'string' || (uci.length !== 4 && uci.length !== 5)) {
+      throw new Error("Invalid UCI format");
+    }
+  
+    let event = {
+      from: uci.substring(0, 2),
+      to: uci.substring(2, 4),
+      promotion: uci.length === 5 ? uci[4] : null
+    };
+  
+    return event;
+}  
+
 function checkMove(move) {
     let result = uciFromMove(move) == MOVE
     console.log(result)
@@ -97,6 +111,15 @@ function next() {
     document.location.reload()
 }
 
+function hint() {
+    window.chess.move(moveFromUci(MOVE))
+    window.board.setPosition(window.chess.fen(), true)
+    document.querySelector(".main-container").classList.add("failed")
+    document.getElementById("hint-button").style.display = "none"
+    document.getElementById("next-button").style.display = ""
+    document.getElementById("restart-button").style.display = ""
+}
+
 window.board = new Chessboard(document.getElementById("board"), {
     position: Chess.FEN,
     assetsUrl: "https://cdn.jsdelivr.net/npm/cm-chessboard@8/assets/",
@@ -112,3 +135,4 @@ restart()
 
 document.getElementById("restart-button").addEventListener("click", restart)
 document.getElementById("next-button").addEventListener("click", next)
+document.getElementById("hint-button").addEventListener("click", hint)
