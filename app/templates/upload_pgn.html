@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% endblock %}
+
+
+{% block body %}
+{% from "formutils.html" import render_field %}
+<div class="container container-form">
+    <form method="POST" action="" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend>Upload pgn</legend>
+            {{ render_field(form.pgn) }}
+            {{ render_field(form.color) }}
+            {{ render_field(form.start) }}
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn") }}
+        </div>
+    </form>
+</div>
+
+{% endblock %}
