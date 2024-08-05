@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link href=" https://cdn.jsdelivr.net/npm/cm-chessboard@8.7.4/assets/chessboard.min.css" rel="stylesheet">
+<link href=" https://cdn.jsdelivr.net/npm/cm-chessboard@8.7.4/assets/extensions/markers/markers.css" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/train.css') }}" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/cm-chessboard@8/src/Chessboard.js"></script>
+{% endblock %}
+
+
+{% block body %}
+
+<div id="board"></div>
+
+<script>
+    const FEN = "{{ fen }}"
+    const MOVE = "{{ move }}"
+</script>
+<script type="module" src="{{ url_for('static', filename='js/train.js') }}"
+{% endblock %}

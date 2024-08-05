@@ -39,16 +39,13 @@ def fens_from_pgn(pgn_string: str, color: chess.Color, start: int=0) -> dict:
     board = game.board()
 
     def parse_recursive(node, depth=0):
-        for index, move in enumerate(node.variations):
+        for move in node.variations:
             board.push(move.move)
-            # if depth >= start:
-            #     if move.turn() == color:
-            #         print(len(node.variations))
-            #         positions[board.fen()] = node.variations[index+1].move
+
             if depth >= start:
                 if move.turn() == color:
                     if move.variations:
-                        positions[board.fen()] = move.variations[0].move
+                        positions[board.fen()] = move.variations[0].uci()
             parse_recursive(move, depth=depth+1)
             board.pop()
 
