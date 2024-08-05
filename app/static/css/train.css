@@ -3,7 +3,9 @@
     --restart-button-hover-color: #d11100;
     --next-button-color: green;
     --next-button-hover-color: #276318;
-    --main-container-color: #2c2323;
+    --hint-button-color: #4c4b49;
+    --hint-button-hover-color: #545351;
+    --main-container-color: #383734;
     --main-container-solved-color: #13350e;
     --main-container-failed-color: #440505;
 }
@@ -63,4 +65,11 @@
 }
 #next-button:hover {
     background-color: var(--next-button-hover-color);
+}
+
+#hint-button {
+    background-color: var(--hint-button-color);
+}
+#hint-button:hover {
+    background-color: var(--hint-button-hover-color);
 }

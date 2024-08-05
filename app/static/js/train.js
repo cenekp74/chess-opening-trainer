@@ -79,12 +79,18 @@ function checkMove(move) {
     } else {
         document.querySelector(".main-container").classList.add("failed")
     }
+    document.getElementById("hint-button").style.display = "none"
+    document.getElementById("next-button").style.display = ""
+    document.getElementById("restart-button").style.display = ""
 }
 
 function restart() {
     window.chess = new Chess(FEN)
     window.board.setPosition(window.chess.fen())
     window.board.enableMoveInput(inputHandler, COL)
+    document.getElementById("hint-button").style.display = ""
+    document.getElementById("next-button").style.display = "none"
+    document.getElementById("restart-button").style.display = "none"
 }
 
 function next() {
