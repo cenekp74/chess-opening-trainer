@@ -12,7 +12,7 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Přihlásit')
 
 class PgnForm(FlaskForm):
-    pgn = TextAreaField('png', validators=[DataRequired()])
+    pgn = TextAreaField('pgn', validators=[DataRequired()])
     color = SelectField('color', validators=[DataRequired()], choices=['black', 'white'])
     start = IntegerField('start', validators=[DataRequired(), NumberRange(min=1, max=30)], default=1)
     submit = SubmitField('Submit')

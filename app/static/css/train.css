@@ -48,7 +48,7 @@
     align-items: center;
     height: 3rem;
     border-radius: var(--border-radius);
-    color: aliceblue;
+    color: var(--text-color);
 }
 
 .button:hover {

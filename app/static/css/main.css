@@ -1,14 +1,128 @@
 :root {
     --border-radius: 7px;
     --bg-color: #090911;
+    --form-color: #11171b;
+    --form-field-color: #37363e;
+    --text-color: #dddddd;
 }
 
 body {
     background-color: var(--bg-color);
+    color: var(--text-color);
 }
 
 .content {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.btn {
+    background-color: transparent;
+    color: var(--text-color);
+    border: 1px solid transparent;
+    border-color: var(--text-color);
+    border-radius: .25rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    text-decoration: none;
+}
+
+[type="button"]:not(:disabled),
+[type="submit"]:not(:disabled),
+button:not(:disabled) {
+    cursor: pointer;
+}
+
+.container-form {
+    width: 70%;
+    min-width: 320px;
+    max-width: 500px;
+    margin-top: 3rem;
+    background-color: var(--form-color);
+    padding: 20px;
+    border-radius: var(--border-radius);
+}
+
+fieldset {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+legend {
+    border-bottom: 1px solid var(--text-color);
+    float: left;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 1.2rem;
+    font-size: calc(1.275rem + .3vw);
+    line-height: inherit;
+}
+
+label {
+    font-size: 110%;
+}
+
+textarea {
+    width: 100%;
+    resize: vertical;
+    background-color: var(--form-field-color);
+    border: 1px var(--bg-color) solid;
+    color: var(--text-color);
+    border-radius: var(--border-radius);
+}
+
+select {
+    background-color: var(--form-field-color);
+    color: var(--text-color);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--disabled-text-color);
+}
+
+.form-group:not(:last-child) {
+    margin-bottom: 1rem;
+}
+
+input.form-control, input.form-input {
+    width: 100%;
+    background-color: var(--form-field-color);
+    color: var(--text-color);
+    border: none;
+    height: 2rem;
+    border-radius: calc(var(--border-radius) - 15px);
+    text-indent: 5px;
+    font-size: 100%;
+    margin-top: 0.2rem;
+}
+
+input[type='checkbox'].form-control {
+    width: unset;
+    height: 1.2rem;
+}
+
+input.invalid {
+    border-color: #dc3545;
+    padding-right: calc(1.5em + .75rem);
+}
+
+.form-check-input {
+    margin-left: 0;
+}
+
+.form-check label {
+    font-size: 90%;
+}
+
+.form-submit {
+    margin-top: 2rem;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.invalid-feedback {
+    width: 100%;
+    margin-top: .25rem;
+    font-size: .875em;
+    color: #dc3545;
 }
