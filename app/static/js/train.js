@@ -101,10 +101,10 @@ function checkMove(move) {
 function restart() {
     window.chess = new Chess(FEN)
     window.board.setPosition(window.chess.fen())
-    window.board.enableMoveInput(inputHandler, COL)
     document.getElementById("hint-button").style.display = ""
     document.getElementById("next-button").style.display = "none"
     document.getElementById("restart-button").style.display = "none"
+    window.board.enableMoveInput(inputHandler, COL)
 }
 
 function next() {
